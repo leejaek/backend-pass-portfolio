@@ -15,6 +15,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.support.TransactionTemplate;
 
@@ -28,6 +29,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 @IntegrationTest
+@TestPropertySource(properties = {
+        "spring.datasource.hikari.maximum-pool-size=32",
+        "spring.datasource.hikari.minimum-idle=5"
+})
 class EventJoinWithExternalConnectionPoolTest {
     private static final int BACKGROUND_THREAD_COUNT = 28;  // 28개 커넥션 점유
     private static final int TEST_THREAD_COUNT = 20;
