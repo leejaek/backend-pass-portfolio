@@ -22,7 +22,7 @@ jobs:
         distribution: 'adopt'
     
     - name: Build with Gradle (skip tests on CI)
-      run: ../gradlew clean bootJar -x test
+      run: ./gradlew clean bootJar -x test
     
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
